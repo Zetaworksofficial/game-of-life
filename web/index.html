@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Game of Life</title>
+<meta name="description" content="Play The Game of Life in your browser: spin the wheel, pick your road through college or career, and retire with the highest net worth." />
+<meta name="theme-color" content="#0b0f16" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="stage">
+  <section id="board" aria-label="Game board">
+    <div id="legend"></div>
+    <svg id="links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div id="tiles"></div>
+    <div id="tokens"></div>
+  </section>
+
+  <aside id="panel">
+    <header id="brand">
+      <h1>THE GAME OF LIFE</h1>
+      <p>financial road simulation</p>
+    </header>
+
+    <div id="speed" role="group" aria-label="Game speed"></div>
+    <div id="banner"></div>
+
+    <div id="spinner">
+      <div id="wheel-wrap">
+        <svg id="wheel" viewBox="0 0 200 200" aria-hidden="true"></svg>
+      </div>
+      <div id="spin-readout">
+        <span class="kicker">SPIN</span>
+        <strong id="spin-value">?</strong>
+        <span id="spin-note">waiting for first spin</span>
+      </div>
+    </div>
+
+    <button id="primary" type="button">SPIN</button>
+
+    <div id="cards"></div>
+
+    <div id="log">
+      <h2>TURN LOG</h2>
+      <ul id="log-list"></ul>
+    </div>
+  </aside>
+</div>
+
+<div id="setup" class="overlay"></div>
+<div id="modal" class="overlay hidden"></div>
+<div id="gameover" class="overlay hidden"></div>
+
+<script src="engine.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
