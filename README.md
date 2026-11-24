@@ -5,8 +5,6 @@ A playable desktop take on *The Game of Life* in Python + pygame. Four players
 and a direct career, take detours, get married, start a family, buy a house and
 retire with the highest net worth.
 
-![Board](preview/board.jpg)
-
 ## Features
 
 - **Full board track** — a 36-tile serpentine spine ending at Retirement, plus a
@@ -24,13 +22,13 @@ retire with the highest net worth.
   turn per click.
 - **Deterministic tests** — seeded AI games and rules checks, no pygame needed.
 
-## Screenshots
+## Screens
 
-| Choice modal | Setup |
-| --- | --- |
-| ![Career and detour choices](preview/choice.jpg) | ![Setup card](preview/setup.jpg) |
-
-![Retirement standings](preview/retirement.jpg)
+- **Setup** — pick 2–4 players and set each seat to human or AI.
+- **Board** — the spine snakes right-to-left across four rows, with the college
+  lane below and the scenic detour above; tokens stack on shared tiles.
+- **Modals** — dimmed overlay with each fork option and its trade-off.
+- **Retirement** — final standings ranked by net worth.
 
 ## Rules
 
@@ -57,7 +55,6 @@ retire with the highest net worth.
 | `Space` / click **SPIN** | Spin the wheel on your turn |
 | Click an option in a modal | Resolve career, detour, marriage, child or house |
 | `1` `2` `3` | Choose option 1–3 in the open modal |
-| `S` | Start screen: switch the seats between human and AI |
 | `R` | Reset back to the setup screen |
 
 ## Getting started
@@ -88,7 +85,6 @@ engine.py             # pure rules: board, spinner, money, milestones, AI — no
 ui.py                 # rendering, hit regions, modals, HUD, setup screen
 main.py               # window loop, turn state machine, speed, CLI flags
 tests/test_engine.py  # engine self-tests
-preview/              # screenshots used in this README
 ```
 
 The engine holds all state and decisions and imports nothing from pygame; the
