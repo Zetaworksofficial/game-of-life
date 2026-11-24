@@ -1,9 +1,13 @@
-# The Game of Life — Desktop Simulation
+# The Game of Life
 
-A playable desktop take on *The Game of Life* in Python + pygame. Four players
-(human or AI) drive the spinner around a 43-tile board, choose between college
-and a direct career, take detours, get married, start a family, buy a house and
-retire with the highest net worth.
+A playable take on *The Game of Life*, in two builds from the same rules: a
+Python + pygame desktop app, and a browser version deployed on Vercel.
+
+**Play in the browser: https://game-of-life-pink-three.vercel.app**
+
+Four players (human or AI) drive the spinner around a 43-tile board, choose
+between college and a direct career, take detours, get married, start a family,
+buy a house and retire with the highest net worth.
 
 ## Features
 
@@ -57,7 +61,7 @@ retire with the highest net worth.
 | `1` `2` `3` | Choose option 1–3 in the open modal |
 | `R` | Reset back to the setup screen |
 
-## Getting started
+## Desktop build
 
 Requires Python 3.10+.
 
@@ -78,18 +82,38 @@ python main.py --smoke --seed 7        # run a full game with no window
 
 `--smoke` uses SDL's dummy drivers, so it works over SSH and in CI.
 
+## Browser build
+
+The browser version is a plain static site: open `web/index.html`, or serve the
+folder with any static server. It has no dependencies and no build step.
+
+```bash
+python -m http.server -d web 8000      # then open http://localhost:8000
+```
+
+The site is deployed on Vercel. The Vercel project has no source of its own: its
+build command fetches `web/` from this repository at build time and publishes the
+result, so a redeploy after a push picks up the new files.
+
 ## Project layout
 
 ```
-engine.py             # pure rules: board, spinner, money, milestones, AI — no pygame
-ui.py                 # rendering, hit regions, modals, HUD, setup screen
-main.py               # window loop, turn state machine, speed, CLI flags
-tests/test_engine.py  # engine self-tests
+engine.py             # desktop rules: board, spinner, money, milestones, AI — no pygame
+ui.py                 # desktop rendering, hit regions, modals, HUD, setup screen
+main.py               # desktop window loop, turn state machine, speed, CLI flags
+tests/test_engine.py  # desktop engine self-tests
+web/index.html        # browser page shell
+web/style.css         # browser base styles (palette, board, tokens)
+web/panel.css         # browser panel, spinner, cards, overlays
+web/engine-data.js    # browser rules data: constants, board layout, event cards
+web/engine-board.js   # browser board graph construction
+web/engine.js         # browser Game class: turns, tile effects, standings, AI
+web/ui.js             # browser board, tokens, HUD and spinner-wheel rendering
+web/game-flow.js      # browser turn loop, choice modals, setup and end screens
 ```
 
-The engine holds all state and decisions and imports nothing from pygame; the
-renderer only reads engine state and reports clicks back as action strings, so
-the same rules can be driven by tests or a headless run.
+The engine holds all state and decisions and imports nothing from the renderer,
+so the same rules can be driven by tests, a headless run, or the browser build.
 
 ## License
 
