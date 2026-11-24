@@ -1,0 +1,609 @@
+/* --- panel --------------------------------------------------------------- */
+
+#panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--panel);
+  border: 1px solid var(--board-edge);
+  border-radius: 18px;
+  padding: 16px 18px 18px;
+}
+
+#brand h1 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+}
+
+#brand p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+#speed {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+#speed button {
+  height: 32px;
+  border-radius: 9px;
+  border: 1px solid var(--edge);
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#speed button:hover {
+  background: #2e3a4e;
+}
+
+#speed button.active {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+#banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border-radius: 10px;
+  padding: 8px 12px;
+  min-height: 44px;
+}
+
+#banner .who {
+  flex: 1;
+  min-width: 0;
+}
+
+#banner .who strong {
+  display: block;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#banner .who small {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+#banner .worth {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* --- spinner ------------------------------------------------------------- */
+
+#spinner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+#wheel-wrap {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  flex: 0 0 auto;
+}
+
+#wheel {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
+}
+
+#wheel-rot {
+  transform-origin: 100px 100px;
+}
+
+#spin-readout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+#spin-value {
+  font-size: 40px;
+  line-height: 1;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+#spin-note {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* --- primary button ------------------------------------------------------ */
+
+#primary {
+  height: 48px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold));
+  color: #1a160c;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(233, 196, 108, 0.18);
+}
+
+#primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+
+#primary:disabled {
+  background: #1a2130;
+  color: var(--dim);
+  border: 1px solid #2a3446;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* --- player cards -------------------------------------------------------- */
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pcard {
+  background: var(--card);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.pcard.current {
+  background: var(--card-hi);
+  border-color: var(--gold);
+}
+
+.pc-top {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+}
+
+.pc-top strong {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pc-top .tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.pc-top .tag.done {
+  color: var(--muted);
+}
+
+.pc-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pc-row .net {
+  font-size: 13px;
+  color: var(--good);
+}
+
+.pc-row .net.neg {
+  color: var(--bad);
+}
+
+.pc-status {
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* --- log ----------------------------------------------------------------- */
+
+#log {
+  flex: 1;
+  min-height: 110px;
+  background: var(--card);
+  border-radius: 10px;
+  padding: 8px 10px 10px;
+  overflow: hidden;
+}
+
+#log h2 {
+  margin: 0 0 4px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+#log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+#log-list li {
+  font-size: 11px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- overlays ------------------------------------------------------------ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(5, 8, 13, 0.82);
+  backdrop-filter: blur(3px);
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.card {
+  width: min(680px, 94vw);
+  max-height: 92vh;
+  overflow: auto;
+  background: var(--panel);
+  border: 1px solid var(--board-edge);
+  border-radius: 18px;
+  padding: 26px 28px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 26px;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+
+.card .sub {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.card .hint {
+  margin: 14px 0 0;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.setup-card {
+  width: min(640px, 94vw);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 22px 0 12px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter button {
+  width: 42px;
+  height: 38px;
+  border-radius: 9px;
+  border: 1px solid var(--edge);
+  background: var(--card);
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.counter button:disabled {
+  color: var(--dim);
+  border-color: #2a3446;
+  cursor: default;
+}
+
+.counter strong {
+  min-width: 26px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.seats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.seat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border-radius: 10px;
+  padding: 9px 12px;
+}
+
+.seat input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 2px 0;
+}
+
+.seat input:focus {
+  outline: none;
+  border-bottom-color: var(--gold-dim);
+}
+
+.seat .toggle {
+  width: 176px;
+  border: 1px solid var(--edge);
+  border-radius: 9px;
+  background: #131a26;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.seat .toggle small {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.seat .toggle.ai {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+.card button.primary,
+button.primary {
+  width: 100%;
+  height: 52px;
+  margin-top: 22px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold));
+  color: #1a160c;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+/* --- modal --------------------------------------------------------------- */
+
+.modal-card {
+  width: min(620px, 94vw);
+}
+
+.modal-card h2 {
+  font-size: 19px;
+  letter-spacing: 0.04em;
+}
+
+.modal-card .prompt {
+  margin: 10px 0 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--edge);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: #2e3a4e;
+  border-color: var(--gold-dim);
+}
+
+.opt-label {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.opt-detail {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* --- retirement ---------------------------------------------------------- */
+
+.over-card {
+  width: min(720px, 94vw);
+  text-align: center;
+}
+
+.ranking {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.ranking li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 10px 14px;
+}
+
+.ranking li.winner {
+  background: var(--card-hi);
+  border-color: var(--gold);
+}
+
+.ranking .rank {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.ranking .detail {
+  flex: 1;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.ranking .worth {
+  min-width: 104px;
+  text-align: right;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ranking li.winner .worth {
+  color: var(--gold);
+}
+
+/* --- responsive ---------------------------------------------------------- */
+
+@media (max-width: 1040px) {
+  #stage {
+    grid-template-columns: 1fr;
+  }
+
+  #board {
+    aspect-ratio: auto;
+    height: 64vw;
+    min-height: 420px;
+    max-height: 620px;
+  }
+
+  #spinner {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  #stage {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  #panel {
+    padding: 14px;
+  }
+
+  #board {
+    height: 78vw;
+    min-height: 340px;
+  }
+
+  .tile {
+    font-size: 8px;
+    width: clamp(40px, 10vw, 62px);
+    height: 30px;
+  }
+
+  #legend {
+    font-size: 9px;
+    gap: 2px 8px;
+  }
+
+  #wheel-wrap {
+    width: 132px;
+    height: 132px;
+  }
+
+  .seat .toggle {
+    width: 132px;
+  }
+}
